@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>預約看診</title>
+  <style>
+    /* 略... */
+  </style>
+</head>
+<body>
+
+<div class="records-container">
+  <h2>預約看診</h2>
+  
+  <!-- Form for submitting appointments -->
+  <form id="appointmentForm" action="{{ url_for('submit') }}" method="post">
+    <!-- 新增名字和電話欄位 -->
+    <label for="patientName">名字：</label>
+    <input type="text" id="patientName" name="name" required>
+
+    <label for="patientPhone">電話：</label>
+    <input type="tel" id="patientPhone" name="phone" required>
+
+    <label for="appointmentDate">預約日期：</label>
+    <input type="date" id="appointmentDate" name="date" required>
+
+    <label for="appointmentTime">預約時間：</label>
+    <!-- 限制時間範圍為每十五分鐘一區間，早上十點到晚上七點 -->
+    <input type="time" id="appointmentTime" name="time" required step="900" min="10:00" max="19:00">
+
+    <!-- Use the 'submit' type for the button -->
+    <button type="submit">提交預約</button>
+  </form>
+</div>
+
+</body>
+</html>
